@@ -4,8 +4,8 @@ import { Button } from 'reactstrap';
 import MyModal from "./Modal";
 import MyPopover from "./Popover";
 
-const name = require("../data/Name");
-const randomName = require("../data/RandomName");
+import checkName from "../data/Name";
+import generateName from "../data/RandomName";
 
 const Form = () => {
     const [modal, setModal] = useState(false);
@@ -30,7 +30,7 @@ const Form = () => {
             //show loading
             setVisibility("");
             //get name info
-            const packageNameInfo = await name.checkName(packageNameInput.value.replace(/ /g, "-"));
+            const packageNameInfo = await checkName(packageNameInput.value.replace(/ /g, "-"));
             setTitle(`<h3>${packageNameInput.value.replace(/ /g, "-").toUpperCase()}</h3>`);
             setContent(
                 `<b className=${packageNameInfo.success ? "text-success" : "text-danger"}>
@@ -95,7 +95,7 @@ const submitHandler = async(event) => {
 const getSuggestions = (name) => {
     const suggestions = [];
     for (let i = 0; i < 3; i++) {
-        suggestions.push(randomName.generateName(name));
+        suggestions.push(generateName(name));
     }
     return suggestions;
 }

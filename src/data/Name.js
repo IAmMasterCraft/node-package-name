@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-exports.checkName = async (name) => {
+const checkName = async (name) => {
     try {
         const response = await axios.get(`https://lit-hamlet-93900.herokuapp.com/api/check-package/${name}`);
         // console.log(response);
@@ -13,3 +13,5 @@ exports.checkName = async (name) => {
         };
     }
 }
+
+export default checkName;
