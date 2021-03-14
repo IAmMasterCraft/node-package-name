@@ -60,13 +60,18 @@ const Form = () => {
         }
     }
 
+    const inputCasing = () => {
+        const inputValue = document.getElementById("npm-name");
+        inputValue.value = inputValue.value.toLowerCase();
+    }
+
     return (
         <div className="row">
             <div className="col-lg-12">
                 <form onSubmit={submitHandler} style={{ display: (visibility === "none") ? "" : "none" }}>
                     <div className="form-group">
                         {/* <label for="npm-name">Node Package Name:</label> */}
-                        <input type="text" className="form-control" id="npm-name" placeholder="Enter node package name" required />
+                        <input type="text" className="form-control" id="npm-name" onChange={inputCasing} placeholder="Enter node package name" required />
                         <span className="pull-right text-right" id="npm-pop" />
                     </div>
                     <Button id="submit-button" color="secondary" style={buttonStyle} onClick={submittingForm}> Check Availability </Button>
