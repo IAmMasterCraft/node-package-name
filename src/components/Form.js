@@ -62,7 +62,7 @@ const Form = () => {
 
     const inputCasing = () => {
         const inputValue = document.getElementById("npm-name");
-        inputValue.value = inputValue.value.toLowerCase();
+        inputValue.value = inputValue.value.replace(/ /g, "-").toLowerCase();
     }
 
     return (
